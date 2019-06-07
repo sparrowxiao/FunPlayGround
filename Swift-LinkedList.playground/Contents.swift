@@ -26,62 +26,95 @@ import Foundation
 
 /*
  * For your reference:*/
-
- class SinglyLinkedListNode {
-      var data: Int
-      var next: SinglyLinkedListNode?
+public class SinglyLinkedListNode {
+    var data: Int
+    var next: SinglyLinkedListNode?
     
-    init( data:Int) {
+    public init(nodeData: Int) {
+        self.data = nodeData
+    }
+}
+
+public class SinglyLinkedList {
+    var head: SinglyLinkedListNode?
+    var tail: SinglyLinkedListNode?
+    
+    public init() {}
+    
+    public func insertNode(nodeData: Int) {
+        self.insertNode(node: SinglyLinkedListNode(nodeData: nodeData))
+    }
+    
+    private func insertNode(node: SinglyLinkedListNode) {
+        if let tail = tail {
+            tail.next = node
+        } else {
+            head = node
+        }
+        
+        tail = node
+    }
+}
+/*
+ public class SinglyLinkedListNode {
+     public var data: Int
+     public var next: SinglyLinkedListNode?
+    
+     public init( data:Int) {
         self.data = data
     }
-  }
+  }*/
 
- 
-func insertNodeAtPosition(head: SinglyLinkedListNode?, data: Int, position: Int) -> SinglyLinkedListNode? {
+func printSinglyLinkedList(head: SinglyLinkedListNode? ) {
+    var node = head
     
-    var currentNode = head;
-    
-    // insert position at index 0
-    if position == 0 {
-        head?.data = data
-        head?.next = currentNode
-        return head
+    while node != nil {
+        print("\(node?.data) ")
+        node = node!.next
+        
+        
     }
+}
+
+func insertNodeAtPosition(llist: SinglyLinkedListNode?, data: Int, position: Int) -> SinglyLinkedListNode? {
     
-    // insert position >=1
-    var currentPosition = 1 ;// to start
-    currentNode = head?.next
+    var currentNode:SinglyLinkedListNode? = llist
+    var currentPosition:Int = 0 // to start
+    let newNode: SinglyLinkedListNode = SinglyLinkedListNode(nodeData:data)
+   
+    
     while(currentNode != nil){
-        if position != currentPosition {
+        if position == currentPosition+1 {
+            newNode.next = currentNode?.next
+            currentNode!.next = newNode
+            break
+            
+        }else{
+            
             currentNode = currentNode?.next
             currentPosition += 1
-        }else{
-            let tempNode = currentNode
-            currentNode?.data = data
-            currentNode?.next = tempNode
         }
     }
-    return head
+    return llist
+
+
+    
 }
 
-// Complete the sockMerchant function below.
-func sockMerchant(n: Int, ar: [Int]) -> Int {
-    let sortedsocks = ar.sorted(by:<)
-    //the start point to check the sorted array
-    var checkpoint : Int = 0
-    var num_pair : Int = 0
-    while (checkpoint < n-1){
-        if(sortedsocks[checkpoint] == sortedsocks[checkpoint+1]){
-            checkpoint += 2
-            num_pair += 1
-        }
-        else {checkpoint += 1}
-    }
-    return num_pair
-}
+var llist = SinglyLinkedList()
+//list is 16 13 7
+llist.insertNode(nodeData: 16)
+llist.insertNode(nodeData: 13)
+llist.insertNode(nodeData: 7)
 
-let n:Int = 9
-let ar:[Int]  = [10,20,20,10,10,30,50,10,20]
-let result = sockMerchant(n: n, ar: ar)
+//
+guard let data:Int = 1
+    else{print("Bad input")}
 
 
+guard let position:Int = 2
+    else{print("Bad input")}
+
+let llist_head = insertNodeAtPosition(llist: llist.head!, data: data, position: position)
+
+printSinglyLinkedList(head:llist_head)
