@@ -23,6 +23,7 @@
 
 
 import Foundation
+import XCTest
 
 /*
  * For your reference:*/
@@ -55,21 +56,13 @@ public class SinglyLinkedList {
         tail = node
     }
 }
-/*
- public class SinglyLinkedListNode {
-     public var data: Int
-     public var next: SinglyLinkedListNode?
-    
-     public init( data:Int) {
-        self.data = data
-    }
-  }*/
+
 
 func printSinglyLinkedList(head: SinglyLinkedListNode? ) {
     var node = head
     
     while node != nil {
-        print("\(node?.data) ")
+        print("\(node!.data) ")
         node = node!.next
         
         
@@ -101,20 +94,84 @@ func insertNodeAtPosition(llist: SinglyLinkedListNode?, data: Int, position: Int
     
 }
 
-var llist = SinglyLinkedList()
-//list is 16 13 7
-llist.insertNode(nodeData: 16)
-llist.insertNode(nodeData: 13)
-llist.insertNode(nodeData: 7)
 
-//
-guard let data:Int = 1
-    else{print("Bad input")}
+//printSinglyLinkedList(head:llist_head)
 
+class TestSinglyList: XCTestCase{
+    
+    var inputList = SinglyLinkedList()
+    var outputList = SinglyLinkedList()
+    
+    override func setUp() {
+        
+        super.setUp()
+        
+    }
+    override func tearDown() {
+    
+        super.tearDown()
+    }
+    
+    func testInsertNodeFunction(){
+        //list is 16 13 7
+        inputList.insertNode(nodeData: 16)
+        inputList.insertNode(nodeData: 13)
+        inputList.insertNode(nodeData: 7)
+        
+        
+        //result list is 16 13 1 7
+        outputList.insertNode(nodeData: 16)
+        outputList.insertNode(nodeData: 13)
+        outputList.insertNode(nodeData: 1)
+        outputList.insertNode(nodeData: 7)
+        
+        //insert data is 1
+        let data: Int = 1
+        
+        //insert position is 2
+        let position: Int = 2
+        
+        
+        let resultList_head:SinglyLinkedListNode? = insertNodeAtPosition(llist: inputList.head, data: data, position: position)
+        var node1:SinglyLinkedListNode? = resultList_head
+        var node2:SinglyLinkedListNode? = outputList.head
+        while node1 != nil{
+            XCTAssertEqual(node1?.data,node2?.data)
+            node1 = node1?.next
+            node2 = node2?.next
+        }
+        
+        
+    }
+}
 
-guard let position:Int = 2
-    else{print("Bad input")}
+TestSinglyList.defaultTestSuite.run()
 
-let llist_head = insertNodeAtPosition(llist: llist.head!, data: data, position: position)
+/*
+struct TodoItem {
+    let title: String
+    let dueBy: Date?
+    
+    init(title: String) {
+        self.title = title
+        self.dueBy = nil
+    }
+}
 
-printSinglyLinkedList(head:llist_head)
+class TodoTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+    }
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    func testTodo() {
+        let taskTitle = "finish laundry"
+        let todo = TodoItem(title: taskTitle)
+        XCTAssertEqual(todo.title, taskTitle)
+    }
+}
+
+TodoTests.defaultTestSuite.run()*/
