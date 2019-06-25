@@ -1,6 +1,6 @@
 # FunPlayGround
 
-It is upgraded to swift 5
+I upgraded them to swift 5 and seperated into to iOS and MacOS platform
 
 ## Data Structure and Algorithms
 
