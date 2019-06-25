@@ -1,2 +1,17 @@
 # FunPlayGround
-I call here Fun Playground since I just play around with SWIFT by myself, and make some notes about some funny things different from other programming language I learned.
+
+It is upgraded to swift 5
+
+## Data Structure and Algorithms
+
+1.[Anagrams](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-iOS-Anagrams.playground/Contents.swift)
+
+2.[LinkedList](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-iOS-LinkedList.playground/Contents.swift)
+
+3.[TripleSum](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-iOS-TripleSum.playground/Contents.swift)
+
+4.[SherlockString](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-iOS-SherlockString.playground/Contents.swift)
+
+
+## Image Processing
+1.[NSImage Resized by GraphicContext and NSBitmapImageRep](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-macOS-image-resize.playground/Contents.swift)
