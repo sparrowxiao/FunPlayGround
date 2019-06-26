@@ -15,4 +15,5 @@ I upgraded them to swift 5 and seperated into iOS and MacOS platform
 
 ## Image Processing
 1.[NSImage Resized by GraphicContext and NSBitmapImageRep](https://github.com/sparrowxiao/FunPlayGround/blob/master/Swift-macOS-image-resize.playground/Contents.swift)
+
 2.[Unit Test the resize function created in Swift-macOS-image-resize.playground. Easily get the measure report to show that the #2 draw method is faster than #1](https://github.com/sparrowxiao/FunPlayGround/tree/master/Swift-macOS-unit-test-image-resize.playground)
